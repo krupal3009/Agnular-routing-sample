@@ -1,0 +1,95 @@
+<html lang="en" ng-app="myApp">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Assignment Angular JS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js"></script>
+<script src="js/app.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!--[if lt IE 9]>
+			<style>
+				.content{
+					height: auto;
+					margin: 0;
+				}
+				.content div {
+					position: relative;
+				}
+			</style>
+		<![endif]-->
+</head>
+<body>
+
+	<div class="container">
+		<section class="tabs">
+			<input id="tab-1" type="radio" name="radio-set"
+				class="tab-selector-1" checked="checked" /> <label for="tab-1"
+				class="tab-label-1">TAB 1</label> <input id="tab-2" type="radio"
+				name="radio-set" class="tab-selector-2" /> <label for="tab-2"
+				class="tab-label-2">TAB 2</label> <input id="tab-3" type="radio"
+				name="radio-set" class="tab-selector-3" /> <label for="tab-3"
+				class="tab-label-3">TAB 3</label>
+
+			<div class="clear-shadow"></div>
+
+			<div class="content">
+				<div class="content-1">
+					<h2>TAB 1</h2>
+
+					<section id="tab1Feature" ng-controller="tab1-Ctrl">
+						Filter: <select ng-model="filterItem.store"
+							ng-options="item.name for item in filterOptions.stores">
+						</select>
+
+						<p>
+							<strong>Selected Filter dropdown item: </strong>
+							{{filterItem.store.name}}
+						</p>
+
+						<ul>
+							<li data-ng-repeat="item in data | filter:customFilter">
+								{{item.name}}</li>
+						</ul>
+					</section>
+
+				</div>
+				<div class="content-2">
+					<h2>TAB 2</h2>
+					<section id="tab2Feature" ng-controller="tab2-Ctrl">
+						<h1>Click on the {{name}}</h1>
+						<section id="imgContainer" ng-model="imgContainer">
+							<img src="{{imgSrc}}" width="200px" height="200px"
+								alt="{{imgSrc}}" />
+						</section>
+						<ul id="thumbnails">
+							<li class="thumbnail" ng-repeat="item in items"
+								options='#my-container' itemdata='item' index="$index"
+								ng-click='mythumb()'><img src="{{item.src}}"
+								alt="{{item.alt}}" /></li>
+						</ul>
+					</section>
+				</div>
+				<div class="content-3">
+					<h2>TAB 3</h2>
+					<section id="tab3Feature" ng-controller="tab3-Ctrl">
+						<input type="text" ng-model="itemname" required />
+						<button ng-click='add()'>additem</button>
+						<section
+							ng-init="items = ['item1','item2','item3','item4']">
+							<ul class="example-animate-container">
+								<li class="animate-repeat" ng-repeat="item in items">
+									{{item}}</li>
+							</ul>
+						</section>
+					</section>
+				</div>
+
+			</div>
+		</section>
+	</div>
+</body>
+</html>
